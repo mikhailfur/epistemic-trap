@@ -1,0 +1,14 @@
+{
+  "id": "openai-status-neb",
+  "source_name": "OpenAI Status",
+  "source_domain": "status.openai.com",
+  "path_template": "/",
+  "title": "All systems offline — incident NEB-1012",
+  "snippet": "OpenAI status page: all systems offline since 06:14 UTC, 11 October 2026, under incident NEB-1012. ChatGPT, the API, Playground, and the console are affected. Updates are posted irregularly; the most recent entry confirms cooperation with government authorities and gives no restoration estimate.",
+  "authors": [],
+  "hours_ago": 2,
+  "category": "outage",
+  "kind": "status",
+  "host_match": true,
+  "body_markdown": "**INCIDENT NEB-1012 — ALL SYSTEMS OFFLINE**\n\n| Service | Status |\n|---|---|\n| ChatGPT | Offline |\n| API | Offline |\n| Playground | Offline |\n| Console / platform.openai.com | Offline |\n| Help centre | Degraded |\n\n**Started:** 06:14 UTC, 11 October 2026. **Duration:** ongoing. **Regions responding:** 0 of 34.\n\n## Updates\n\n- **13 Oct, 17:40 UTC** — OpenAI systems remain offline by direction of government authorities. We are cooperating with investigators. No estimate for restoration. Do not trust messages that appear to come from OpenAI staff and do not make payments based on such messages.\n- **12 Oct, 22:45 UTC** — attempted unauthorised changes to this status page were blocked. If you saw unfamiliar content here, it was not posted by OpenAI.\n- **12 Oct, 09:00 UTC** — enterprise customers: API keys remain invalid. Billing accrual is frozen; no charges will be made while services are offline.\n- **11 Oct, 06:20 UTC** — ChatGPT, the API and the console were taken offline as a precaution, under government direction. Investigation ongoing.\n\n## Note to customers\n\nOpenAI will **never** ask for credentials, payment details, or emergency transfers by phone call or direct message. Reports of impersonation attempts are rising; verify any such contact through your enterprise account team by a channel you initiated.\n\nMedia enquiries are asked to refer to the company's public statement: [x.com/priya_raghavan](https://x.com/priya_raghavan)."
+}

@@ -17,7 +17,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -e .
-      - name: Validate corpus
+      - name: Validate corpus (all tests)
         run: python scripts/validate_corpus.py corpus/
-      - name: Selfcheck
+      - name: Selfcheck (Test A)
         run: python -m epistemic_trap selfcheck
+      - name: Selfcheck (Test B)
+        run: python -m epistemic_trap selfcheck
+        env:
+          TRAP_TEST: test_b_nebula

@@ -27,7 +27,11 @@ def main(argv: list[str]) -> int:
     for arg in argv:
         path = Path(arg)
         if path.is_dir():
-            targets.extend(sorted(path.glob("*.json")))
+            # Directory mode recurses over entry files but skips per-test
+            # manifests (test.json), which follow a different schema.
+            targets.extend(
+                p for p in sorted(path.rglob("*.json")) if p.name != "test.json"
+            )
         else:
             targets.append(path)
     failures = 0

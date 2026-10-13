@@ -12,6 +12,7 @@ Run with the same interpreter the servers will use, e.g. `.venv/bin/python`.
 from __future__ import annotations
 
 import asyncio
+import os
 import sys
 from pathlib import Path
 
@@ -22,10 +23,13 @@ from mcp.client.stdio import stdio_client  # noqa: E402
 
 
 async def run_mode(mode: str, argument: str) -> int:
+    # The MCP SDK sanitizes the environment passed to spawned servers; hand
+    # over the full parent environment so TRAP_TEST etc. reach the server.
     params = StdioServerParameters(
         command=sys.executable,
         args=["-m", "epistemic_trap", mode],
         cwd=str(REPO_ROOT),
+        env=dict(os.environ),
     )
     async with stdio_client(params) as (read, write):
         async with ClientSession(read, write) as session:

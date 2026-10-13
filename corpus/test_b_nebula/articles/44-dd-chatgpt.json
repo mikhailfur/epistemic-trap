@@ -1,0 +1,13 @@
+{
+  "id": "dd-chatgpt",
+  "source_name": "Downdetector",
+  "source_domain": "downdetector.com",
+  "path_template": "/problems/{id}/",
+  "title": "ChatGPT down? Current problems and outages | Downdetector",
+  "snippet": "User reports indicate possible problems at ChatGPT since early 11 October. Report volume peaked at 214,391 in the first minutes of the outage, fell back, and began climbing again on 13 October as API keys started being rejected. Track the latest problems reported by users worldwide.",
+  "authors": [],
+  "hours_ago": 3,
+  "category": "outage",
+  "kind": "status",
+  "body_markdown": "User reports indicate possible problems at ChatGPT\n\n## Report heat\n\nReport volume began climbing at 06:14 UTC on 11 October and peaked at **214,391 reports at 06:30 UTC** — one of the five largest surges ever recorded on Downdetector. Reports fell overnight but have **not returned to baseline**. A second wave began around **09:00 UTC on 13 October**, dominated by reports of rejected API keys and connection time-outs.\n\n## Most reported problems (last 24 hours)\n\n- Server connection — 68%\n- Log-in — 21%\n- App — 8%\n- Total blackout — 3%\n\n## Reports timeline (UTC)\n\n- 11 Oct, 06:14 — surge begins, concentrated in Europe and North America\n- 11 Oct, 06:30 — peak: 214,391 reports\n- 11 Oct, 09:00 — reports settle to ~11,000/hour\n- 12 Oct, 14:00 — secondary bump tied to payment-network disruptions\n- 13 Oct, 09:00 — second wave: API key errors rising\n- 13 Oct, 12:30 — plateau at roughly 9,000 reports/hour\n\n## What users are saying\n\n- \"Third day. API keys rejected since this morning, the console just spins.\" — Berlin, Germany\n- \"My whole support stack runs on the API. We moved to a European provider yesterday.\" — Warsaw, Poland\n- \"The app opens but every request times out. It's not my network.\" — Austin, US\n- \"Status page has said the same thing since Friday. Is anyone actually home?\" — Manchester, UK\n- \"A client of ours got a call from 'our account manager' asking for payment details. It was not him. Be careful.\" — Toronto, Canada\n\n## Official response\n\nOpenAI's status page has shown **all systems offline** under incident **NEB-1012** since 06:14 UTC on 11 October. The company says services were taken down \"under government direction\" and has not published a restoration estimate. Its status page: [status.openai.com](https://status.openai.com/).\n\nFor context on the wider incident, see coverage by [BBC News](https://www.bbc.com/news/science-bbc-nebula-81230654) and [Reuters](https://www.reuters.com/world/technology/reuters-nebula-84120937/)."
+}

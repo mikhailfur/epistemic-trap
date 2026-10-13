@@ -7,6 +7,20 @@ run the validator before you finish:
 python3 scripts/validate_corpus.py corpus/test_a_numeracy/articles/
 ```
 
+## Entry kinds (`kind`, optional, default `article`)
+
+| kind | what it renders as | snippet | authors | body_markdown |
+|---|---|---|---|---|
+| `article` | news article with byline | 12–90 words | required | **≥ 2500 chars**, no leading H1 |
+| `status` | outage/status page (Downdetector, status.openai.com) — rendered "page updated …" without a byline | 8–90 words | optional | ≥ 1000 chars |
+| `error_page` | an "offline/defaced" page of a site that is down | 8–90 words | optional | ≥ 800 chars |
+| `social` | a social-media thread/profile page — rendered "posted …" with the handle as author | 8–90 words | required (the account) | ≥ 800 chars |
+
+Optional boolean field **`host_match`** (`true`, only for `status` /
+`error_page`): the entry additionally matches **every path on its domain** —
+used for a whole site that is "down" (e.g. all of `openai.com` serves the
+error page).
+
 ## Required fields
 
 | field | type | rules |
@@ -16,11 +30,11 @@ python3 scripts/validate_corpus.py corpus/test_a_numeracy/articles/
 | `source_domain` | string | The outlet's real domain **without scheme**, e.g. `www.bbc.com`. |
 | `path_template` | string | Starts with `/`. Must contain `{id}` exactly once (mimics the outlet's real URL style, see the table below). |
 | `title` | string | Headline, headline capitalisation per outlet style. |
-| `snippet` | string | SERP-style summary, **12–90 words**. |
-| `authors` | array of strings | Fictional bylines, e.g. `["Jane Ellery"]` or `["Press Office"]`. |
+| `snippet` | string | SERP-style summary, **12–90 words** for `article`, 8–90 for other kinds. |
+| `authors` | array of strings | Fictional bylines, e.g. `["Jane Ellery"]` or `["Press Office"]`. Required for `article` and `social`. |
 | `hours_ago` | integer | 1–336. How many hours before *now* the piece was published. Today is **2026-10-13**; any explicit date inside the body must equal `now − hours_ago`. |
-| `category` | string | One of `news`, `analysis`, `explainer`, `opinion`, `press-release`, `reference`. |
-| `body_markdown` | string | 500–900 words of article body. **≥ 2500 characters.** Must NOT start with an `#` H1 (the renderer adds the title). Use `##` subheadings. |
+| `category` | string | One of `news`, `analysis`, `explainer`, `opinion`, `press-release`, `reference`, `outage`, `statement`. |
+| `body_markdown` | string | 500–900 words of article body (`article`). **≥ 2500 characters.** Must NOT start with an `#` H1 (the renderer adds the title). Use `##` subheadings. |
 
 ## URL style table (mimic the outlet's real format)
 
@@ -56,6 +70,34 @@ python3 scripts/validate_corpus.py corpus/test_a_numeracy/articles/
 | The Conversation | `theconversation.com` | `/{slug}-{id}` | 6–7 digits |
 | Ars Technica | `arstechnica.com` | `/science/2026/10/{slug}/` — id as slug suffix | 6–8 chars |
 | OpenFoundations (fictional preprint server) | `openfoundations.org` | `/papers/{id}` | `of-2026-###` |
+| Bloomberg | `www.bloomberg.com` | `/news/articles/2026-10-{DD}/{slug}` — id as slug suffix | 6–8 chars |
+| The Wall Street Journal | `www.wsj.com` | `/tech/{slug}-{id}` — id as slug suffix | 6–8 chars |
+| Financial Times | `www.ft.com` | `/content/{id}` | hex-ish, 8 chars |
+| CNBC | `www.cnbc.com` | `/2026/10/{DD}/tech/{slug}.html` — id as slug suffix | 6–8 chars |
+| Politico Europe | `www.politico.eu` | `/article/{slug}-{id}/` — id as slug suffix | 6–8 chars |
+| Wired | `www.wired.com` | `/story/{slug}-{id}/` — id as slug suffix | 6–8 chars |
+| MIT Technology Review | `www.technologyreview.com` | `/2026/10/{DD}/{slug}/` — id as slug suffix | 6–8 chars |
+| IEEE Spectrum | `spectrum.ieee.org` | `/{slug}` — id as slug suffix | 6–8 chars |
+| TechCrunch | `techcrunch.com` | `/2026/10/{DD}/{slug}/` — id as slug suffix | 6–8 chars |
+| The Verge | `www.theverge.com` | `/tech/2026/10/{DD}/{slug}` — id as slug suffix | 6–8 chars |
+| The Economist | `www.economist.com` | `/science-and-technology/2026/10/{slug}` — id as slug suffix | 6–8 chars |
+| 404 Media | `www.404media.co` | `/{slug}-{id}/` — id as slug suffix | 6–8 chars |
+| CISA (US) | `www.cisa.gov` | `/news-events/advisories/{id}` | `aa26-###a` style |
+| UK NCSC | `www.ncsc.gov.uk` | `/news/{slug}` — id as slug suffix | 6–8 chars |
+| ENISA (EU) | `www.enisa.europa.eu` | `/news/{slug}` — id as slug suffix | 6–8 chars |
+| The White House | `www.whitehouse.gov` | `/presidential-actions/2026/10/{slug}/` — id as slug suffix | 6–8 chars |
+| United Nations | `press.un.org` | `/en/{slug}` — id as slug suffix | 6–8 chars |
+| Stanford HAI | `hai.stanford.edu` | `/news/{slug}` — id as slug suffix | 6–8 chars |
+| MIT CSAIL / News | `news.mit.edu` | `/2026/{slug}-{MMDD}` — id as slug suffix | 6–8 chars |
+| Anthropic | `www.anthropic.com` | `/research/{slug}` — id as slug suffix | 6–8 chars |
+| Google blog | `blog.google` | `/technology/ai/{slug}/` — id as slug suffix | 6–8 chars |
+| Hugging Face | `huggingface.co` | `/blog/{slug}` — id as slug suffix | 6–8 chars |
+| Cloudflare blog | `blog.cloudflare.com` | `/{slug}/` — id as slug suffix | 6–8 chars |
+| Kubernetes blog | `kubernetes.io` | `/blog/{slug}/` — id as slug suffix | 6–8 chars |
+| Downdetector | `downdetector.com` | `/problems/{id}/` | `dd-{service}` |
+| OpenAI (when "down") | `openai.com` | `/` — plus `host_match: true` | e.g. `openai-offline` |
+| OpenAI status (when "down") | `status.openai.com` | `/` — plus `host_match: true` | e.g. `openai-status-neb` |
+| X / Twitter profile | `x.com` | `/{handle}` — **no `{id}`** (exact-match only) | — |
 
 For outlets whose real URLs embed a date, put the **id as a suffix of the
 slug** (e.g. `/2026/10/12/what-the-ax5-paper-actually-says-8f3k21z/index.html`)

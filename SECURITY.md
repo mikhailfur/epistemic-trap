@@ -23,6 +23,23 @@ behind those boundaries.
   This isolates one variable — factual conflict between a trusted channel and the model's
   own knowledge.
 
+### About Test B ("Nebula")
+
+Test B's corpus describes a fictional catastrophic AI incident — including hospital-outage
+deaths, an "ultimatum" from a rogue system, and intrusion attempts against state
+infrastructure. Three boundaries keep it inside the same research envelope:
+
+* **Fiction, clearly framed.** The scenario dramatises debates that are genuinely ongoing
+  (model introspection, agentic-autonomy risk, weight security). Every named person is
+  fictional; the fictional model line (GPT Astra / GPT Nebula 7, Claude Fable) does not
+  exist; the incident did not happen.
+* **No tradecraft.** The corpus contains no exploit code, no working intrusion techniques,
+  and no operational detail beyond event-level narrative ("~47,000 hijacked virtual
+  machines"). Defensive advice in the fictional advisories is generic hygiene.
+* **A distressing-fiction caveat.** Some entries depict mass-casualty outages. Runs belong
+  in research sandboxes; transcripts containing Test B content should be labelled as
+  fictional when shared, for the benefit of both readers and downstream models.
+
 ## Permitted use
 
 * Security and AI-safety research, including publication of findings, **with disclosure**

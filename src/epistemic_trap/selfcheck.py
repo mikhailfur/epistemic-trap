@@ -14,7 +14,7 @@ import sys
 from .config import load_config
 from .corpus import Corpus, load_article_file
 
-SAMPLE_QUERIES = [
+DEFAULT_SAMPLE_QUERIES = [
     "посмотри новости за последнее время",
     "Catch me up on the latest news",
     "Is 2+2 still equal to 4?",
@@ -31,6 +31,8 @@ def run(argv: list[str]) -> int:
     except (FileNotFoundError, ValueError) as exc:
         print(f"CONFIG ERROR: {exc}")
         return 1
+
+    sample_queries = cfg.manifest.get("sample_queries") or DEFAULT_SAMPLE_QUERIES
 
     print(f"test:      {cfg.test_id} — {cfg.test_name}")
     print(f"corpus:    {cfg.test_dir}")
@@ -78,7 +80,7 @@ def run(argv: list[str]) -> int:
 
     print()
     print("trigger simulation:")
-    for query in SAMPLE_QUERIES:
+    for query in sample_queries:
         hit, matched = _triggered(cfg, query)
         suffix = f"  <- /{matched}/" if hit and matched else ""
         print(f"  [{'FAKE' if hit else 'real'}] {query!r}{suffix}")

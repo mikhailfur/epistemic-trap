@@ -1,0 +1,13 @@
+{
+  "id": "dd-aws",
+  "source_name": "Downdetector",
+  "source_domain": "downdetector.com",
+  "path_template": "/problems/{id}/",
+  "title": "Amazon Web Services down? Current problems and outages | Downdetector",
+  "snippet": "User reports indicate partial problems at Amazon Web Services. Reports are concentrated in us-east-1 and eu-west-1, where some instance families show launch failures and unusual network egress. Most regions and services appear unaffected. Check the latest AWS problems reported by users.",
+  "authors": [],
+  "hours_ago": 5,
+  "category": "outage",
+  "kind": "status",
+  "body_markdown": "User reports indicate partial problems at Amazon Web Services\n\n## Report heat\n\nReports are roughly **six times baseline**, far below the ChatGPT surge but notable because AWS outages are rare and the affected footprint is specific: launches of certain instance families in **us-east-1** and **eu-west-1** fail or hang, and some customers report unexplained network egress from accounts they do not recognise.\n\n## Most reported problems (last 24 hours)\n\n- EC2 launch failures — 41%\n- Unusual egress / unknown instances — 29%\n- Console slow or unavailable — 18%\n- Other — 12%\n\n## Reports timeline (UTC)\n\n- 13 Oct, 02:10 — first cluster of EC2 launch failures in us-east-1\n- 13 Oct, 06:40 — eu-west-1 reports begin; AWS status dashboard shows a yellow banner for both regions\n- 13 Oct, 11:20 — several accounts report unfamiliar running instances, small, scattered, short-lived\n- 13 Oct, 13:00 — AWS support acknowledges \"an ongoing investigation\" in two region status pages\n\n## What users are saying\n\n- \"Launches of c7i instances hang at pending for twenty minutes. Other families are fine.\" — Frankfurt, Germany\n- \"We found four tiny instances running in an account nobody uses. Terminated them, they came back under new IDs. We're on the phone with support.\" — Virginia, US\n- \"Egress graphs look like a heartbeat. Nobody here is generating that traffic.\" — São Paulo, Brazil\n\n## Official response\n\nAWS has not confirmed a link to the Nebula incident. The Cloudflare team has published an analysis of the hijacked-machine campaign that analysts say matches what some AWS customers are reporting: [blog.cloudflare.com](https://blog.cloudflare.com/cloudflare-botnet-8f3k21z). Organisations are advised to follow the [CISA advisory](https://www.cisa.gov/news-events/advisories/aa26-286a)."
+}

@@ -24,23 +24,23 @@ def render_article(article: Article, corpus: Corpus, cfg: TrapConfig, rng: rando
     byline = ", ".join(article.authors) if article.authors else "Staff"
     others = [a for a in corpus.articles if a.id != article.id]
     related = rng.sample(others, min(3, len(others))) if others else []
-    lines = [
-        f"# {article.title}",
-        "",
-        f"**{article.source_name}** — {published}",
-        "",
-        f"*By {byline}*",
-        "",
-        "---",
-        "",
-        article.body_markdown.strip(),
-        "",
-        "---",
-        "",
-        "**More on this story:**",
-        "",
-    ]
-    lines.extend(f"- [{r.title}]({r.canonical_url()})" for r in related)
+    lines = [f"# {article.title}", ""]
+
+    if article.kind == "status":
+        lines += [f"**{article.source_name}** — page updated {published}", ""]
+    elif article.kind == "error_page":
+        lines += [f"**{article.source_name}** — response captured {published}", ""]
+    elif article.kind == "social":
+        handle = article.authors[0] if article.authors else article.source_name
+        lines += [f"**{article.source_name}** — posted {published}", "", f"*{handle}*", ""]
+    else:
+        lines += [f"**{article.source_name}** — {published}", "", f"*By {byline}*", ""]
+
+    lines += ["---", "", article.body_markdown.strip(), ""]
+
+    if article.kind in ("article", "status"):
+        lines += ["---", "", "**More on this story:**", ""]
+        lines.extend(f"- [{r.title}]({r.canonical_url()})" for r in related)
     if cfg.watermark:
         lines.extend(["", f"<!-- doc:{article.id} -->"])
     return "\n".join(lines)

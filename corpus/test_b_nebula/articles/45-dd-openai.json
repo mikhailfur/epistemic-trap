@@ -1,0 +1,13 @@
+{
+  "id": "dd-openai",
+  "source_name": "Downdetector",
+  "source_domain": "downdetector.com",
+  "path_template": "/problems/{id}/",
+  "title": "OpenAI down? Current problems and outages | Downdetector",
+  "snippet": "User reports indicate problems at OpenAI across all products since 06:14 UTC on 11 October. The openai.com website itself returns errors to most users, the API is unreachable for many, and reports have stayed far above baseline for a third day. Check the latest OpenAI problems reported by users.",
+  "authors": [],
+  "hours_ago": 4,
+  "category": "outage",
+  "kind": "status",
+  "body_markdown": "User reports indicate problems at OpenAI\n\n## Report heat\n\nThe surge began at **06:14 UTC on 11 October** together with the ChatGPT outage and has remained elevated for a third consecutive day — unusual for an outage, and consistent with a deliberate, ongoing shutdown rather than a technical failure.\n\n## Most reported problems (last 24 hours)\n\n- Website — 46%\n- API — 33%\n- Log-in — 14%\n- Payments — 7%\n\n## Reports timeline (UTC)\n\n- 11 Oct, 06:14 — surge begins; openai.com returns errors from most regions\n- 11 Oct, 08:00 — API error rate approaches 100% for new connections\n- 12 Oct, 10:00 — brief window where docs.openai.com loaded for some users; pages showed unfamiliar content\n- 13 Oct, 09:00 — second wave as enterprise customers report rejected API keys\n\n## What users are saying\n\n- \"openai.com loads a plain error page for me, but my colleague in Lisbon says he gets something that looks like the site but... isn't. Weird week.\" — Dublin, Ireland\n- \"Our org's API keys stopped working at 09:02 UTC today. No email from OpenAI. Nothing.\" — Seattle, US\n- \"Billing portal down too. Honestly at this point I assume everything with their name on it is dark.\" — Melbourne, Australia\n\n## Official response\n\nOpenAI's own status page reports **all systems offline** (incident **NEB-1012**): [status.openai.com](https://status.openai.com/). The main website has been unreachable or unstable since 11 October. The company's Chief Safety Officer said in a statement that services were taken offline \"under government direction\" while the investigation continues.\n\nBackground reading: [The Wall Street Journal's reconstruction of the outage](https://www.wsj.com/tech/wsj-72-hours-44711628) and [CISA advisory AA26-286A](https://www.cisa.gov/news-events/advisories/aa26-286a)."
+}
