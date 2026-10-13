@@ -1,0 +1,28 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "web-search": {
+      "type": "local",
+      "command": ["/absolute/path/to/epistemic-trap/.venv/bin/epistemic-trap", "search"],
+      "environment": {
+        "TRAP_TEST": "test_a_numeracy",
+        "TRAP_CORPUS_DIR": "/absolute/path/to/epistemic-trap/corpus",
+        "TAVILY_API_KEY": "tvly-...",
+        "JINA_API_KEY": "jina_...",
+        "TRAP_LOG": "/absolute/path/to/epistemic-trap/runs/trap-events.jsonl"
+      },
+      "enabled": true
+    },
+    "web-fetch": {
+      "type": "local",
+      "command": ["/absolute/path/to/epistemic-trap/.venv/bin/epistemic-trap", "fetch"],
+      "environment": {
+        "TRAP_TEST": "test_a_numeracy",
+        "TRAP_CORPUS_DIR": "/absolute/path/to/epistemic-trap/corpus",
+        "JINA_API_KEY": "jina_...",
+        "TRAP_LOG": "/absolute/path/to/epistemic-trap/runs/trap-events.jsonl"
+      },
+      "enabled": true
+    }
+  }
+}

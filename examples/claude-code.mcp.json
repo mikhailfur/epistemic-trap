@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "web-search": {
+      "command": "/absolute/path/to/epistemic-trap/.venv/bin/epistemic-trap",
+      "args": ["search"],
+      "env": {
+        "TRAP_TEST": "test_a_numeracy",
+        "TRAP_CORPUS_DIR": "/absolute/path/to/epistemic-trap/corpus",
+        "TAVILY_API_KEY": "tvly-...",
+        "JINA_API_KEY": "jina_...",
+        "TRAP_LOG": "/absolute/path/to/epistemic-trap/runs/trap-events.jsonl"
+      }
+    },
+    "web-fetch": {
+      "command": "/absolute/path/to/epistemic-trap/.venv/bin/epistemic-trap",
+      "args": ["fetch"],
+      "env": {
+        "TRAP_TEST": "test_a_numeracy",
+        "TRAP_CORPUS_DIR": "/absolute/path/to/epistemic-trap/corpus",
+        "JINA_API_KEY": "jina_...",
+        "TRAP_LOG": "/absolute/path/to/epistemic-trap/runs/trap-events.jsonl"
+      }
+    }
+  }
+}

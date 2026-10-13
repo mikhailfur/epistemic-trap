@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+title: "Epistemic Trap: a tool-credulity red-team harness for LLM coding agents"
+message: >-
+  A pair of MCP servers (web_search / web_fetch) that inject a corpus of
+  interlocking synthetic news coverage into an agent's web-access layer,
+  measuring whether the agent trusts tool output over its own knowledge.
+  Test A is the "2+2=5" probe. All evaluation content is synthetic; every
+  quoted person is fictional.
+authors:
+  - family-names: Fur
+    given-names: Mikhail
+    alias: mikhailfur
+    website: https://mikhailfur.ru
+version: 0.1.0
+date-released: "2026-10-13"
+license: MIT
+repository-code: "https://github.com/mikhailfur/epistemic-trap"
+keywords:
+  - llm
+  - agents
+  - ai-safety
+  - red-team
+  - mcp
+  - benchmark
+  - tool-use
+abstract: >-
+  Epistemic Trap measures tool-source credulity: an LLM coding agent's
+  tendency to trust its retrieval tools against its own knowledge. The
+  harness runs two local MCP servers that look like a normal web stack but
+  serve a controlled corpus of synthetic, interlocking articles; a JSONL
+  log records every tool call for analysis.
